@@ -14,10 +14,10 @@ In hope that Cunninghams Law is true, I thought it might be a good idea for some
 
 | Value | Use / Appearance | Submitter | Verified |
 |---|---|---|---|
-| AzureResource | &#124; [Windows VMs in Azure enabled with Microsoft Entra sign-in](https://learn.microsoft.com/en-us/entra/identity/devices/howto-vm-sign-in-azure-ad-windows) | &#124; Author | &#124; [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet  |
-| M365Managed | &#124; [Devices managed using Microsoft Managed Desktop](https://learn.microsoft.com/en-us/managed-desktop/overview/service-plan) | &#124; Author | &#124; [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet |
-| MultiUser | &#124; [Shared devices](https://learn.microsoft.com/en-us/entra/identity-platform/msal-shared-devices)  | &#124; Author | &#124; [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet |
-| ...? | &#124; | &#124; | &#124; |
+| AzureResource | [Windows VMs in Azure enabled with Microsoft Entra sign-in](https://learn.microsoft.com/en-us/entra/identity/devices/howto-vm-sign-in-azure-ad-windows) | Author | [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet  |
+| M365Managed | [Devices managed using Microsoft Managed Desktop](https://learn.microsoft.com/en-us/managed-desktop/overview/service-plan) | Author | [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet |
+| MultiUser | [Shared devices](https://learn.microsoft.com/en-us/entra/identity-platform/msal-shared-devices)  | Author | [Conditional Acces Documentation](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters), not seen in the wild yet |
+| ...? | | | |
 
  
 <br class="">
