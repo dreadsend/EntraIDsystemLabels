@@ -16,9 +16,6 @@
   Author:         Julian Sperling
   Creation Date:  09.12.23
   Purpose/Change: Initial script development
-  
-.EXAMPLE
-  <Example goes here. Repeat this attribute for more than one example>
 #>
 
 param(
@@ -63,9 +60,8 @@ function Get-GraphData {
         [System.Collections.Arraylist]$result
     )
 
-    # Invoke Graph API request
+    # Get the first set of Devices from the Graph API and store them
     $response = Invoke-MgGraphRequest -Method GET -Uri $Uri -Headers $headers -OutputType PSObject
-
     $result.AddRange($response.value)
 
     # Check for the next link and recursively fetch data
@@ -107,7 +103,7 @@ switch ($PSCmdlet.ParameterSetName) {
 }
 
 
-# Check if all Required Scopes are Present
+# Check if all required Scopes are Present
 $missingScopes = $requiredScopes | Where-Object { $_ -notin $(Get-MgContext).Scopes }
 if ($missingScopes) {
     Write-Host "The following Scopes are missing: $($missingScopes -join ', ')"
@@ -120,14 +116,13 @@ $devices = [System.Collections.Arraylist]::new()
 # It feels wrong to me to fetch all Devices and start processing them locally if the API Supports Filters that give us what we want
 # We have to tell the Graph API that we are using count ($count=true) and accept a lower consistency Level
 $uri = 'https://graph.microsoft.com/v1.0/devices?$filter=systemLabels/$count ne 0&$count=true&$select={0}' -f $($deviceProperties -join ',')
-
 Get-GraphData -Uri $uri -result $devices -headers @{ ConsistencyLevel = "eventual" }
 
 # If the Full list was requested we skip the simplification
 if ($fullList) {return $devices}
 
-$result = @{}
 
+$result = @{}
 # For simplicity and speed I only store one example for each value
 foreach ($dev in $devices){
     foreach ($entry in $dev.systemLabels){
