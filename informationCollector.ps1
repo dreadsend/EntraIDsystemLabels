@@ -12,11 +12,14 @@
   Returns the full list of the Devices instead of simplifying
 
 .NOTES
-  Version:        1.0
+  Version:        1.1
   Author:         Julian Sperling
   Creation Date:  09.12.23
-  Purpose/Change: Initial script development
+  Last Updated: 05.05.25
+  Purpose/Change: Minor Code Optimizations
 #>
+
+#Requires -modules Microsoft.Graph.Authentication
 
 param(
     [Parameter(ParameterSetName = "Interactive")]
@@ -45,7 +48,6 @@ param(
 
 )
 
-$requiredModules = @('Microsoft.Graph.Authentication')
 $requiredScopes = @('Device.Read.All')
 
 $deviceProperties = @('displayName', 'systemLabels')
@@ -69,18 +71,6 @@ function Get-GraphData {
         Get-GraphData -Uri $response.'@odata.nextLink' -headers $headers -result $result
     }
 }
-
-
-
-# Check for Required Modules
-$installedModules = Get-Module -ListAvailable | Select-Object -ExpandProperty Name
-$missingModules = $requiredModules | Where-Object { $_ -notin $installedModules }
-
-if ($missingModules) { 
-    Write-Host "The following modules are missing: $($missingModules -join ', ') `nPlease Install the Module(s) and try again"
-    return
-}
-
 
 # Connect to Graph API depending on Script Parameters Used
 switch ($PSCmdlet.ParameterSetName) {
